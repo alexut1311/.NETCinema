@@ -1,0 +1,38 @@
+﻿@model MovieViewModel
+@{
+    ViewData["Title"] = "Adauga film";
+}
+<div class="container">
+    <form class="" method="post" enctype="multipart/form-data" asp-controller="Movie" asp-action="AddMovie">
+        <div class="form-group">
+            <label for="movie-name">Movie Name</label>
+            <input type="text" class="form-control" id="movie-name" name="MovieName" asp-for="@Model.MovieName" placeholder="Enter movie name..." required>
+        </div>
+        <div class="form-group" id="actors-grid">
+            <label for="movie-name">Movie Actors</label><br />
+            <a class="btn btn-primary cursor-pointer mb-2" id="add-actor">Add new actor</a>
+            <input type="text" class="form-control mb-2" placeholder="Enter actor name...">
+            <input type="text" class="form-control mb-2" placeholder="Enter actor name...">
+        </div>
+        <select name="Actors" id="actors" class="d-none" multiple="multiple" asp-for="@Model.Actors">
+        </select>
+        <div class="form-group">
+            <label for="movie-description">Movie description</label>
+            <textarea rows="5" cols="60" class="form-control" id="movie-description" name="Description" asp-for="@Model.Description" placeholder="Enter movie description..." required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="movie-duration">Movie duration</label>
+            <input type="number" class="form-control" id="movie-duration" name="Duration" asp-for="@Model.Duration" placeholder="Enter movie duration..." required>
+        </div>
+        <div class="form-group">
+            <label for="movie-photo">Movie photo</label>
+            <input type="file" class="form-control" id="movie-photo" name="Photo" asp-for="@Model.Photo" accept="image/png, image/jpeg">
+        </div>
+        <button type="submit" class="btn btn-primary">Add movie</button>
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </form>
+</div>
+@section Scripts{
+    <script src="~/js/add-movie.js"></script>
+    <script>Add_Movie_Module.Init();</script>
+} 
